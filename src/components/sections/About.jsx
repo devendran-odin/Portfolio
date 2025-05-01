@@ -1,6 +1,6 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 import cursorLogo from "../../assets/cursorLogo.jpeg";
-
+import { Fade, Bounce } from "react-awesome-reveal";
 export const About = () => {
   const programmingFrameworks = [
     {
@@ -93,9 +93,9 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-center py-20"
+      className="min-h-screen flex items-center justify-center py-20 "
     >
-      <RevealOnScroll>
+      <Fade cascade damping={0.5}>
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
             {" "}
@@ -103,7 +103,7 @@ export const About = () => {
           </h2>
 
           <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
-            <p className="text-gray-300 mb-6">
+            <p className="text-gray-300 mb-6 text-center md:text-left">
               Passionate developer with expertise in building web applications
               and creating innovative solutions. These are some of the
               technologies I use to bring ideas to life
@@ -202,7 +202,7 @@ export const About = () => {
             </div>
           </div>
         </div>
-      </RevealOnScroll>
+      </Fade>
     </section>
   );
 };

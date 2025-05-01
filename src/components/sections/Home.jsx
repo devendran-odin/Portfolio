@@ -1,28 +1,60 @@
 import { RevealOnScroll } from "../RevealOnScroll";
+import BlurText from "../../blocks/TextAnimations/BlurText/BlurText";
+import FadeContent from "../../blocks/Animations/FadeContent/FadeContent.jsx";
 
 export const Home = () => {
+  const handleAnimationComplete = () => {
+    console.log("Animation completed!");
+  };
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative"
+      className="min-h-screen flex items-center  justify-center relative"
     >
-      <RevealOnScroll>
-        <div className="text-center z-10 px-4">
-          <div className="flex">
-            <span className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent leading-right">
-              Hi, I'm Devendran
-            </span>
-            <span className="hidden md:block ml-2 text-5xl md:text-7xl font-bold">
-              👋
-            </span>
-          </div>
+      <div className="text-center z-10 px-4">
+        <div className="flex ">
+          <BlurText
+            text="Hi, I'm Devendran"
+            spanClassName="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent"
+            delay={200}
+            animateBy="words"
+            direction="top"
+            onAnimationComplete={handleAnimationComplete}
+            className="text-5xl md:text-7xl font-bold mb-6 text-center flex justify-center items-center"
+          />
 
-          <p className="tex-gray-400 text-[16px] md:text-lg mb-8 max-w-xl  mx-auto">
+          <span className="hidden md:block ml-2 text-5xl md:text-7xl font-bold">
+            👋
+          </span>
+        </div>
+
+        {/* <p className="tex-gray-400 text-[16px] md:text-lg mb-8 max-w-xl  mx-auto">
             I'm a full-stack developer eager to contribute to impactful projects
             and grow as a developer. I build clean, scalable websites that solve
             real-world problems and deliver great user experiences. I'm excited
             to collaborate and make a difference through technology.
-          </p>
+          </p> */}
+
+        <FadeContent
+          blur={true}
+          duration={2700}
+          easing="ease-out"
+          delay={2000}
+          initialOpacity={0}
+          className="text-[16px] md:text-lg mb-8 max-w-xl  mx-auto"
+        >
+          I'm a full-stack developer eager to contribute to impactful projects
+          and grow as a developer. I build clean, scalable websites that solve
+          real-world problems and deliver great user experiences. I'm excited to
+          collaborate and make a difference through technology.
+        </FadeContent>
+        <FadeContent
+          blur={true}
+          duration={3000}
+          easing="ease-out"
+          delay={2000}
+          initialOpacity={0}
+        >
           <div className="flex  flex-col md:flex-row justify-center space-x-4">
             <a
               href="#projects"
@@ -40,8 +72,8 @@ export const Home = () => {
               Download Resume
             </a>
           </div>
-        </div>
-      </RevealOnScroll>
+        </FadeContent>
+      </div>
     </section>
   );
 };
