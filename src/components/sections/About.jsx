@@ -1,6 +1,5 @@
-import { RevealOnScroll } from "../RevealOnScroll";
 import cursorLogo from "../../assets/cursorLogo.jpeg";
-import { Fade, Bounce } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 export const About = () => {
   const programmingFrameworks = [
     {
@@ -93,7 +92,7 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-center py-20 "
+      className="min-h-screen flex items-center justify-center py-20 z-10"
     >
       <Fade cascade damping={0.5}>
         <div className="max-w-3xl mx-auto px-4">

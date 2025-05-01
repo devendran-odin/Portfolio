@@ -11,9 +11,7 @@ import { Contact } from "./components/sections/Contact";
 import Footer from "./components/Footer";
 import FollowCursor from "./components/FollowCursor/FollowCursor";
 import TrailingCursor from "./components/FollowCursor/TrailingCursor";
-import BlurText from "./blocks/TextAnimations/BlurText/BlurText";
 import { Fade } from "react-awesome-reveal";
-import { AnimatedBackground } from "animated-backgrounds";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,14 +19,15 @@ function App() {
 
   return (
     <>
-      {/* <div className="fixed top-0 left-0 w-full h-full -z-10">
-        <AnimatedBackground animationName="starryNight" blendMode="Multiply" />
-      </div> */}
+      <div className="fixed inset-0 z-[-1] bg-black overflow-hidden">
+        <div className="absolute top-1/4 left-1/3 w-[400px] h-[400px] bg-gradient-to-r from-purple-500 to-pink-500 opacity-30 rounded-full blur-[100px] animate-blob pointer-events-none"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-[300px] h-[300px] bg-gradient-to-r from-blue-500 to-cyan-500 opacity-20 rounded-full blur-[100px] animate-blob pointer-events-none"></div>
+      </div>
       {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}{" "}
       <div
         className={`min-h-screen transition-opacity duration-700 ${
           isLoaded ? "opacity-100" : "opacity-0"
-        }  text-gray-100`}
+        } bg-transparent text-gray-100`}
       >
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 

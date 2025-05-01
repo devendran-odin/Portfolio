@@ -1,4 +1,3 @@
-import { RevealOnScroll } from "../RevealOnScroll";
 import rentify from "../../assets/rentify3.png";
 import delicious from "../../assets/delicious.png";
 import movieverse from "../../assets/movieverse.png";

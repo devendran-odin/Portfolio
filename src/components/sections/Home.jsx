@@ -1,4 +1,3 @@
-import { RevealOnScroll } from "../RevealOnScroll";
 import BlurText from "../../blocks/TextAnimations/BlurText/BlurText";
 import FadeContent from "../../blocks/Animations/FadeContent/FadeContent.jsx";
 
@@ -9,7 +8,7 @@ export const Home = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center  justify-center relative"
+      className="min-h-screen flex items-center bg-transparent justify-center relative z-0"
     >
       <div className="text-center z-10 px-4">
         <div className="flex ">
@@ -27,13 +26,6 @@ export const Home = () => {
             👋
           </span>
         </div>
-
-        {/* <p className="tex-gray-400 text-[16px] md:text-lg mb-8 max-w-xl  mx-auto">
-            I'm a full-stack developer eager to contribute to impactful projects
-            and grow as a developer. I build clean, scalable websites that solve
-            real-world problems and deliver great user experiences. I'm excited
-            to collaborate and make a difference through technology.
-          </p> */}
 
         <FadeContent
           blur={true}
