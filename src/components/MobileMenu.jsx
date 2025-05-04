@@ -68,7 +68,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
         Contact
       </a>
       <a
-        href="https://drive.google.com/file/d/1oYFpIjmdMEDgnHTy8ioks44HBVU5Biu9/view"
+        href="https://drive.google.com/file/d/1V3aeUWpcpmwmrBTKsfwdxCPwtbFeK3Qb/view?usp=drive_link"
         target="_blank"
         onClick={() => setMenuOpen(false)}
         className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
