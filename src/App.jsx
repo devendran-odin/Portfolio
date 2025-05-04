@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { LoadingScreen } from "./components/LoadingScreen";
 import { Navbar } from "./components/Navbar";
@@ -10,12 +10,29 @@ import "./index.css";
 import { Contact } from "./components/sections/Contact";
 import Footer from "./components/Footer";
 import FollowCursor from "./components/FollowCursor/FollowCursor";
-import TrailingCursor from "./components/FollowCursor/TrailingCursor";
 import { Fade } from "react-awesome-reveal";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      if (window.innerWidth <= 768) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    };
+
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+    };
+  }, []);
 
   return (
     <>
@@ -23,14 +40,13 @@ function App() {
         <div className="absolute top-1/4 left-1/3 w-[400px] h-[400px] bg-gradient-to-r from-purple-500 to-pink-500 opacity-30 rounded-full blur-[100px] animate-blob pointer-events-none"></div>
         <div className="absolute bottom-1/4 right-1/3 w-[300px] h-[300px] bg-gradient-to-r from-blue-500 to-cyan-500 opacity-20 rounded-full blur-[100px] animate-blob pointer-events-none"></div>
       </div>
-      {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}{" "}
+      {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
       <div
         className={`min-h-screen transition-opacity duration-700 ${
           isLoaded ? "opacity-100" : "opacity-0"
         } bg-transparent text-gray-100`}
       >
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <Fade damping={1.5} duration={3500}>
           <Home />
@@ -39,8 +55,11 @@ function App() {
           <Contact />
           <Footer />
         </Fade>
-        <FollowCursor />
-        {/* <TrailingCursor /> */}
+        {!isMobile && (
+          <div className="hidden lg:block">
+            <FollowCursor />
+          </div>
+        )}
       </div>
     </>
   );
