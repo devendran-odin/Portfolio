@@ -39,8 +39,8 @@ function App() {
           <Contact />
           <Footer />
         </Fade>
-        {/* <FollowCursor /> */}
-        <TrailingCursor />
+        <FollowCursor />
+        {/* <TrailingCursor /> */}
       </div>
     </>
   );

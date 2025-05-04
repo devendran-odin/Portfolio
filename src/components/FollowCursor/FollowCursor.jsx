@@ -36,7 +36,7 @@ const FollowCursor = ({ color = "#3876d9" }) => {
         context.closePath();
       }
     }
-    const dot = new Dot(width / 2, height / 2, 10, 10);
+    const dot = new Dot(width / 2, height / 2, 6, 6);
     const onMouseMove = (e) => {
       cursor.x = e.clientX;
       cursor.y = e.clientY;

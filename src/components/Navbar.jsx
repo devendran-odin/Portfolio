@@ -63,7 +63,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
               Contact{" "}
             </a>
             <a
-              href="https://drive.google.com/file/d/1oYFpIjmdMEDgnHTy8ioks44HBVU5Biu9/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1V3aeUWpcpmwmrBTKsfwdxCPwtbFeK3Qb/view?usp=drive_link"
               target="_blank"
               className="text-gray-300 hover:text-blue-500 transition-colors"
             >
