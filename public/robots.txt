@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://devendran.vercel.app/sitemap.xml
+Sitemap: https://devendran.in/sitemap.xml
