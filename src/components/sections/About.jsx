@@ -1,207 +1,131 @@
-import cursorLogo from "../../assets/cursorLogo.jpeg";
-import { Fade } from "react-awesome-reveal";
+import { PiGraduationCap } from "react-icons/pi";
+import { profile } from "../../data/profile";
+import { skillGroups } from "../../data/skills";
+import { ICONS, logoFor } from "../icons";
+
+const SkillIcon = ({ item }) => {
+  const src = logoFor(item.logo);
+  if (!src) {
+    const Fallback = ICONS.code;
+    return <Fallback className="text-xl text-ink" />;
+  }
+  return (
+    <img
+      src={src}
+      alt=""
+      loading="lazy"
+      width="22"
+      height="22"
+      className={`h-[22px] w-[22px] object-contain ${
+        item.invert ? "[filter:invert(1)_hue-rotate(180deg)_brightness(1.1)]" : ""
+      }`}
+    />
+  );
+};
+
 export const About = () => {
-  const programmingFrameworks = [
-    {
-      name: "HTML",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
-    },
-    {
-      name: "CSS",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
-    },
-
-    {
-      name: "Tailwind CSS",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
-    },
-    {
-      name: "C",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg",
-    },
-    {
-      name: "Java",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
-    },
-    {
-      name: "JavaScript",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
-    },
-    {
-      name: "React",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
-    },
-    {
-      name: "Node.js",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
-    },
-    {
-      name: "Express.js",
-      path: "devicon-express-original",
-    },
-
-    {
-      name: "MySQL",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
-    },
-    {
-      name: "MongoDB",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
-    },
-  ];
-
-  const cloudDevTools = [
-    {
-      name: "AWS",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
-    },
-    {
-      name: "Docker",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
-    },
-    {
-      name: "Git",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
-    },
-    {
-      name: "GitHub",
-      path: "devicon-github-original",
-    },
-    {
-      name: "Postman",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg",
-    },
-    {
-      name: "VS Code",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",
-    },
-    {
-      name: "Cursor",
-      icon: cursorLogo,
-    },
-    {
-      name: "Figma",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
-    },
-    {
-      name: "Jenkins",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg",
-    },
-  ];
+  const { about, education } = profile;
 
   return (
-    <section
-      id="about"
-      className="min-h-screen flex items-center justify-center py-20 z-10"
-    >
-      <Fade cascade damping={0.5}>
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
-            {" "}
-            About Me
+    <section id="about" className="py-[clamp(88px,13vw,160px)]">
+      <div className="container-page flex flex-wrap items-start gap-[clamp(40px,5vw,72px)]">
+        <div className="min-w-0 max-w-[560px] flex-[1_1_400px]">
+          <div data-reveal className="eyebrow">About</div>
+          <h2 data-reveal data-delay="80" className="section-title mt-[18px]">
+            {about.title}
           </h2>
-
-          <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
-            <p className="text-gray-300 mb-6 text-center md:text-left">
-              Passionate developer with expertise in building web applications
-              and creating innovative solutions. These are some of the
-              technologies I use to bring ideas to life
+          {about.paragraphs.map((p, i) => (
+            <p
+              key={i}
+              data-reveal
+              data-delay={160 + i * 60}
+              className={`${i === 0 ? "mt-6" : "mt-4"} max-w-[60ch] text-[clamp(16px,1.5vw,18px)] text-muted [text-wrap:pretty]`}
+            >
+              {p}
             </p>
+          ))}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="rounded-xl p-6  border border-white/20 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
-                <h3 className="text-xl font-bold mb-4">
-                  {" "}
-                  Programming & Frameworks
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {programmingFrameworks.map((tech, key) => (
-                    <div
-                      key={key}
-                      className="flex items-center gap-3 mb-0.5 border border-blue-400 py-1.5 px-3 rounded-full"
-                    >
-                      {tech.icon ? (
-                        <img
-                          src={tech.icon}
-                          alt={tech.name}
-                          className="w-6 h-6"
-                        />
-                      ) : (
-                        <i className={tech.path + " text-[22px]"}></i>
-                      )}
-                      <span>{tech.name}</span>
-                    </div>
-                  ))}
+          {education && (
+            <div
+              data-reveal
+              data-delay="280"
+              className="card mt-[clamp(24px,3.5vw,36px)] flex items-start gap-4 rounded-[18px] px-[22px] py-5"
+            >
+              <span className="grid h-11 w-11 flex-none place-items-center rounded-xl border border-violet/25 bg-violet/12 text-[22px] text-violet-ink">
+                <PiGraduationCap />
+              </span>
+              <div className="min-w-0">
+                <div className="text-[13px] font-medium uppercase tracking-[.06em] text-muted">
+                  Education · {education.years}
                 </div>
-              </div>
-
-              <div className="rounded-xl p-6  border border-white/20 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
-                <h3 className="text-xl font-bold mb-4"> Cloud & Dev Tools</h3>
-                <div className="flex flex-wrap gap-2">
-                  {cloudDevTools.map((tech, key) => (
-                    <div
-                      key={key}
-                      className="flex items-center gap-3 mb-0.5 border border-blue-400 py-1.5 px-3 rounded-full"
-                    >
-                      {tech.icon ? (
-                        <img
-                          src={tech.icon}
-                          alt={tech.name}
-                          className="w-6 h-6"
-                        />
-                      ) : (
-                        <i className={tech.path + " text-[22px]"}></i>
-                      )}
-
-                      <span>{tech.name}</span>
-                    </div>
-                  ))}
+                <div className="mt-1 font-display text-xl font-medium leading-tight tracking-[-0.01em]">
+                  {education.degree}
                 </div>
+                <div className="mt-0.5 text-[15px] font-medium text-violet-ink">
+                  {education.school}
+                </div>
+                {education.coursework && (
+                  <div className="mt-2.5 text-[14.5px] leading-[1.55] text-muted [text-wrap:pretty]">
+                    Coursework: {education.coursework}
+                  </div>
+                )}
               </div>
             </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-            <div className="p-6 rounded-xl border border-white/20 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
-              <h3 className="text-xl font-bold mb-4"> 🏫 Education </h3>
-              <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>
-                  <strong> B.E in Computer Science </strong> <br />
-                </li>
-                <li>
-                  <strong>MNM Jain Engineering College</strong> <br />
-                  <span className="pl-6">2021 - 2025</span>
-                </li>
-                <li>
-                  <strong> Relevant Coursework</strong> <br></br>Data
-                  Structures, Object-Oriented Programming, Computer Networking,
-                  Database Management System.
-                </li>
-              </ul>
-            </div>
-            <div className="p-6 rounded-xl  border border-white/20 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
-              <h3 className="text-xl font-bold mb-4"> 💼 Work Experience </h3>
-              <div className="space-y-4 text-gray-300">
-                <div>
-                  <h4 className="font-semibold">
-                    {" "}
-                    DevOps Intern at SentinelFox <br />
-                    July 2024 - Aug 2024
-                  </h4>
-                  <ul className="list-disc pt-2.5 list-inside text-gray-300 space-y-2">
-                    <li>
-                      {" "}
-                      Managed and optimized cloud infrastructure using AWS (EC2,
-                      VPC, S3), automated deployments with Terraform, and
-                      containerized applications using Docker.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
-      </Fade>
+
+        {skillGroups.length > 0 && (
+          <div id="stack" className="min-w-0 flex-[1_1_460px]">
+            <div data-reveal className="eyebrow">Tech stack</div>
+            <p data-reveal data-delay="80" className="mt-3.5 text-[clamp(16px,1.5vw,18px)] text-muted">
+              The tools I use to bring ideas to life.
+            </p>
+            <div className="mt-[clamp(20px,2.5vw,28px)] grid grid-cols-1 gap-4">
+              {skillGroups.map((g, gi) => {
+                const GroupIcon = ICONS[g.icon] || ICONS.code;
+                return (
+                  <div
+                    key={g.title}
+                    data-reveal
+                    data-delay={gi * 120}
+                    className="card relative overflow-hidden rounded-[22px] p-[clamp(20px,2.4vw,26px)]"
+                  >
+                    <div
+                      aria-hidden="true"
+                      className="pointer-events-none absolute -right-[120px] -top-[160px] h-80 w-80 rounded-full"
+                      style={{ background: `radial-gradient(circle, ${g.glow}, transparent 65%)` }}
+                    />
+                    <div className="relative flex items-center gap-3.5">
+                      <span className="grid h-11 w-11 flex-none place-items-center rounded-xl border border-line-strong bg-surface-2 text-[22px] text-mint">
+                        <GroupIcon />
+                      </span>
+                      <div className="min-w-0">
+                        <h3 className="font-display text-[clamp(20px,2.2vw,24px)] font-medium leading-tight tracking-[-0.02em]">
+                          {g.title}
+                        </h3>
+                        <div className="text-sm text-muted">{g.sub}</div>
+                      </div>
+                    </div>
+                    <div className="relative mt-[18px] flex flex-wrap gap-2">
+                      {g.items.map((s) => (
+                        <div
+                          key={s.name}
+                          className="inline-flex min-h-11 items-center gap-2.5 rounded-xl border border-line bg-surface-2 py-[5px] pl-[5px] pr-3 text-[14.5px] font-medium transition-[transform,border-color,background] duration-250 ease-out-soft hover:-translate-y-0.5 hover:border-violet/50 hover:bg-white/[.07]"
+                        >
+                          <span className="grid h-[34px] w-[34px] flex-none place-items-center rounded-[9px] bg-white/[.06]">
+                            <SkillIcon item={s} />
+                          </span>
+                          {s.name}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </div>
     </section>
   );
 };
