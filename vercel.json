@@ -1,14 +1,25 @@
 {
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/",
       "has": [
         {
           "type": "host",
           "value": "devendran.vercel.app"
         }
       ],
-      "destination": "https://devendran.in/:path*",
+      "destination": "https://devendran.in/",
+      "permanent": true
+    },
+    {
+      "source": "/:path+",
+      "has": [
+        {
+          "type": "host",
+          "value": "devendran.vercel.app"
+        }
+      ],
+      "destination": "https://devendran.in/:path+",
       "permanent": true
     }
   ],
