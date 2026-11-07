@@ -26,7 +26,7 @@ export const Hero = ({ ready }) => (
             <span className="text-mint">{profile.roles}</span>
           </p>
 
-          <h1 className="anim-rise mt-9 max-w-[13ch] font-display text-[clamp(46px,8.4vw,112px)] font-medium leading-[1.02] tracking-[-0.045em] [animation-delay:.28s] [animation-duration:1s] [text-wrap:balance] sm:mt-4 sm:leading-none">
+          <h1 className="anim-rise mt-9 max-w-[13ch] font-display text-[clamp(46px,12.8vw,64px)] md:text-[clamp(46px,8.4vw,112px)] font-medium leading-[1.02] tracking-[-0.045em] [animation-delay:.28s] [animation-duration:1s] [text-wrap:balance] sm:mt-4 sm:leading-none">
             {profile.headline}{" "}
             <span className="gradient-text">{profile.headlineAccent}</span>
           </h1>
