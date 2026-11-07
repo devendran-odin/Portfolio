@@ -1,12 +1,14 @@
 import { PiArrowDown, PiFileArrowDown } from "react-icons/pi";
 import { profile } from "../../data/profile";
 
+// Full-screen everywhere. Phones: content sits near the top (just below the navbar);
+// md and up: content vertically centred.
 // The hero is always rendered (so the headline paints immediately — good for LCP/SEO),
 // but its entrance animations stay paused until the intro screen hands over (`ready`).
 export const Hero = ({ ready }) => (
   <section
     id="top"
-    className={`relative flex min-h-svh items-center pb-[clamp(88px,12vh,140px)] pt-[clamp(108px,16vh,180px)] ${ready ? "" : "hero-wait"}`}
+    className={`relative flex min-h-svh items-start pb-[clamp(88px,12vh,140px)] pt-[128px] md:items-center md:pt-[clamp(108px,16vh,180px)] ${ready ? "" : "hero-wait"}`}
   >
     <>
         <div className="container-page">
@@ -24,7 +26,7 @@ export const Hero = ({ ready }) => (
             <span className="text-mint">{profile.roles}</span>
           </p>
 
-          <h1 className="anim-rise mt-6 max-w-[13ch] font-display text-[clamp(46px,8.4vw,112px)] font-medium leading-[1.02] tracking-[-0.045em] [animation-delay:.28s] [animation-duration:1s] [text-wrap:balance] sm:mt-4 sm:leading-none">
+          <h1 className="anim-rise mt-9 max-w-[13ch] font-display text-[clamp(46px,8.4vw,112px)] font-medium leading-[1.02] tracking-[-0.045em] [animation-delay:.28s] [animation-duration:1s] [text-wrap:balance] sm:mt-4 sm:leading-none">
             {profile.headline}{" "}
             <span className="gradient-text">{profile.headlineAccent}</span>
           </h1>
