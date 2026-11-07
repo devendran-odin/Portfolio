@@ -1,14 +1,14 @@
 import { PiArrowDown, PiFileArrowDown } from "react-icons/pi";
 import { profile } from "../../data/profile";
 
-// Full-screen everywhere. Phones: content sits near the top (just below the navbar);
-// md and up: content vertically centred.
+// Full-screen everywhere, content vertically centred.
+// Phones: centred in the space between the navbar (72px) and the scroll cue (~96px).
 // The hero is always rendered (so the headline paints immediately — good for LCP/SEO),
 // but its entrance animations stay paused until the intro screen hands over (`ready`).
 export const Hero = ({ ready }) => (
   <section
     id="top"
-    className={`relative flex min-h-svh items-start pb-[clamp(88px,12vh,140px)] pt-[128px] md:items-center md:pt-[clamp(108px,16vh,180px)] ${ready ? "" : "hero-wait"}`}
+    className={`relative flex min-h-svh items-center pb-[96px] pt-[72px] [@media(max-height:640px)]:pb-6 md:pb-[clamp(88px,12vh,140px)] md:pt-[clamp(108px,16vh,180px)] ${ready ? "" : "hero-wait"}`}
   >
     <>
         <div className="container-page">
